@@ -23,5 +23,33 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/quent/.m2/repository/org/springframework/ws/spring-ws-core/3.0.10.RELEASE/spring-ws-core-3.0.10.RELEASE.jar" sourcepath="C:/Users/quent/.m2/repository/org/springframework/ws/spring-ws-core/3.0.10.RELEASE/spring-ws-core-3.0.10.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework.ws"/>
+			<attribute name="maven.artifactId" value="spring-ws-core"/>
+			<attribute name="maven.version" value="3.0.10.RELEASE"/>
+			<attribute name="maven.scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/quent/.m2/repository/org/springframework/ws/spring-ws-core/3.0.9.RELEASE/spring-ws-core-3.0.9.RELEASE.jar" sourcepath="C:/Users/quent/.m2/repository/org/springframework/ws/spring-ws-core/3.0.9.RELEASE/spring-ws-core-3.0.9.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework.ws"/>
+			<attribute name="maven.artifactId" value="spring-ws-core"/>
+			<attribute name="maven.version" value="3.0.9.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/quent/.m2/repository/org/springframework/ws/spring-xml/3.0.9.RELEASE/spring-xml-3.0.9.RELEASE.jar" sourcepath="C:/Users/quent/.m2/repository/org/springframework/ws/spring-xml/3.0.9.RELEASE/spring-xml-3.0.9.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework.ws"/>
+			<attribute name="maven.artifactId" value="spring-xml"/>
+			<attribute name="maven.version" value="3.0.9.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

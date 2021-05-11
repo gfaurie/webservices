@@ -11,6 +11,8 @@
   <artifactId>user</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+  
+
   <name>user</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
@@ -29,11 +31,18 @@
       <scope>test</scope>
     </dependency>
     
-    <dependency>
-		<groupId>org.springframework.ws</groupId>
-		<artifactId>spring-ws-test</artifactId>
-		<version>3.0.10.RELEASE</version>
-		<scope>test</scope>
+    <!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-ws-core -->
+	<dependency>
+	    <groupId>org.springframework.ws</groupId>
+	    <artifactId>spring-ws-core</artifactId>
+	    <version>3.0.10.RELEASE</version>
+	</dependency>
+    
+  <!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-xml -->
+	<dependency>
+	    <groupId>org.springframework.ws</groupId>
+	    <artifactId>spring-xml</artifactId>
+	    <version>3.0.10.RELEASE</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/wsdl4j/wsdl4j -->

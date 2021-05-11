@@ -1,9 +1,12 @@
 package com.webservices.datamodel;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(value = "month")
@@ -12,9 +15,9 @@ public class Month {
     @Id
     @Column(value = "id_month")
     int idMonth;
-
+    
     @Column(value = "id_user")
-    String idUser;
+    int idUser;
     
     @Column(value = "nb_hour")
     int nbHour;
@@ -27,6 +30,9 @@ public class Month {
     
     @Column(value = "is_locked")
     int isLocked;
+    
+    @MappedCollection(keyColumn = "id_month", idColumn = "id_month")
+	private Set<TimePerProjectAndMonth> timePerProjectAndMonths = new HashSet<>();
 
 	public int getIdMonth() {
 		return idMonth;
@@ -35,12 +41,12 @@ public class Month {
 	public void setIdMonth(int idMonth) {
 		this.idMonth = idMonth;
 	}
-
-	public String getIdUser() {
+	
+	public int getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(String idUser) {
+	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
 
@@ -74,5 +80,15 @@ public class Month {
 
 	public void setIsLocked(int isLocked) {
 		this.isLocked = isLocked;
+	}
+
+	public Set<TimePerProjectAndMonth> getTimePerProjectAndMonths() {
+		return timePerProjectAndMonths;
+	}
+
+	public void addTimePerProjectAndMonths(TimePerProjectAndMonth timePerProjectAndMonths) {
+		this.timePerProjectAndMonths.add(timePerProjectAndMonths);
 	}	
+	
+	
 }

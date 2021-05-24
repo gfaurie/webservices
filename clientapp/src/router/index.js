@@ -15,11 +15,26 @@ const routes = [{
         path: '/login',
         name: 'Login',
         component: Login,
-    }, {
+        props: { isRegister: false }
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: Login,
+        props: { isRegister: true }
+    },
+    {
         path: "/homedev",
         name: "HomeDev",
         component: HomeDev,
-        // TODO Etienne : si pas les droits redirige vers login
+        // Si pas les droits redirige vers login/register
+        beforeEnter: (to, from, next) => {
+            if (localStorage.getItem("authenticatedUser") == null) {
+                next({ name: "Login" });
+            } else {
+                next()
+            }
+        }
     }
     // {
     //     path: '/about',

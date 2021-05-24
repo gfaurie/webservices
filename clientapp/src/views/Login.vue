@@ -1,68 +1,118 @@
 <template>
   <div class="login">
     <div class="container">
+      <div class="text-center py-4">
+        <h3>{{ isRegister ? "Inscription" : "Connexion" }}</h3>
+      </div>
       <b-form class="form-reg" @submit="onSubmit">
-        <b-form-group
-          id="username-group"
-          label="Nom d'utilisateur : "
-          label-for="username-input"
-        >
-          <b-form-input
-            id="username-input"
-            v-model="loginForm.username"
-            type="text"
-            required
-          ></b-form-input>
-        </b-form-group>
-        <b-form-group
-          id="password-group"
-          label="Mot de passe : "
-          label-for="password-input"
-        >
-          <b-form-input
-            id="password-input"
-            v-model="loginForm.password"
-            type="password"
-            required
-          ></b-form-input>
-        </b-form-group>
-
-        <b-button type="submit" class="primary">Se connecter</b-button>
-        <b-button type="button" class="secondary">S'inscrire</b-button>
+        <login-form
+          v-if="!isRegister"
+          v-on:username="(e) => (logForm.username = e)"
+          v-on:password="(e) => (logForm.password = e)"
+        />
+        <register-form
+          v-if="isRegister"
+          v-on:username="(e) => (regForm.username = e)"
+          v-on:firstname="(e) => (regForm.firstname = e)"
+          v-on:lastname="(e) => (regForm.lastname = e)"
+          v-on:password="(e) => (regForm.password = e)"
+          v-on:confirmpassword="(e) => (regForm.confirmpassword = e)"
+          v-on:isManager="(e) => (regForm.isManager = e)"
+        />
+        <div class="text-center">
+          <b-button type="submit" variant="primary" class="mx-1">{{
+            isRegister ? "S'inscrire" : "Se connecter"
+          }}</b-button>
+        </div>
       </b-form>
+      <div class="text-center">
+        <div class="mt-3" v-if="isRegister">
+          Déjà un compte ?
+          <a class="form-link" v-on:click="gotoLogin()">Connectez-vous</a>
+        </div>
+        <div class="mt-3" v-if="!isRegister">
+          Pas encore de compte ?
+          <a class="form-link" v-on:click="gotoRegister()">Inscrivez-vous</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an   to /src
-// import UserService from '@/services/userService.js';
+import UserService from "@/services/userService.js";
+import LoginForm from "@/components/LoginForm";
+import RegisterForm from "@/components/RegisterForm";
 
 export default {
   name: "Login",
+  components: {
+    LoginForm,
+    RegisterForm,
+  },
+  props: {
+    isRegister: Boolean,
+  },
   data() {
     return {
-      loginForm: {
+      userService: new UserService(this.$router),
+      logForm: {
         username: "",
         password: "",
+      },
+      regForm: {
+        username: "",
+        firstname: "",
+        lastname: "",
+        password: "",
+        confirmpassword: "",
+        isManager: false,
       },
     };
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      console.log(this.loginForm);
+      if (!this.isRegister) {
+        console.log(this.logForm);
+        this.userService.authenticate(this.logForm);
+      } else {
+        console.log(this.regForm);
+      }
+    },
+    gotoRegister() {
+      this.isRegister = true;
+    },
+    gotoLogin() {
+      this.isRegister = false;
     },
   },
 };
 </script>
 
 <style>
-body, .container {
-  height: 100%;
+.login {
+  height: auto;
 }
 .form-reg {
   margin: auto;
   max-width: 400px;
+}
+button.btn-primary {
+  background-color: #945656;
+  border-color: #945656;
+}
+button.btn-primary:hover,
+button.btn-primary:focus {
+  background-color: #854d4d; /*10% darkened*/
+  border-color: #854d4d; /*10% darkened*/
+}
+.form-link:hover {
+  color: #854d4d; /*10% darkened*/
+  cursor: pointer;
+}
+.form-link {
+  color: #945656;
 }
 </style>

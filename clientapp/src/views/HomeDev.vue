@@ -1,9 +1,22 @@
 <template>
-<div></div>
+  <div>Welcome {{ user.username }} !!</div>
 </template>
 
 <script>
-export default {};
+import UserService from "../services/userService.js";
+
+export default {
+  data() {
+    return {
+      userService: new UserService(this.$router),
+    };
+  },
+  computed: {
+    user() {
+      return this.userService.getAuthenticatedUser();
+    },
+  },
+};
 </script>
 
 <style>

@@ -9,6 +9,7 @@
         id="username-input"
         v-model="username"
         type="text"
+        class="rounded-pill"
         @input="emitUsername"
         required
       ></b-form-input>
@@ -22,6 +23,7 @@
         id="firstname-input"
         v-model="firstname"
         type="text"
+        class="rounded-pill"
         @input="emitFirstname"
         required
       ></b-form-input>
@@ -35,6 +37,7 @@
         id="lastname-input"
         v-model="lastname"
         type="text"
+        class="rounded-pill"
         @input="emitLastname"
         required
       ></b-form-input>
@@ -48,6 +51,7 @@
         id="password-input"
         v-model="password"
         type="password"
+        class="rounded-pill"
         @input="emitPassword"
         :state="passwordState"
         required
@@ -69,6 +73,7 @@
         id="confirmpassword-input"
         v-model="confirmpassword"
         type="password"
+        class="rounded-pill"
         @input="emitConfirmpassword"
         :state="confirmpasswordState"
         required

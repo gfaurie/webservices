@@ -20,7 +20,7 @@
           v-on:isManager="(e) => (regForm.isManager = e)"
         />
         <div class="text-center">
-          <b-button type="submit" variant="primary" class="mx-1">{{
+          <b-button type="submit" variant="primary" class="mx-1 rounded-pill">{{
             isRegister ? "S'inscrire" : "Se connecter"
           }}</b-button>
         </div>
@@ -92,21 +92,9 @@ export default {
 </script>
 
 <style>
-.login {
-  height: auto;
-}
 .form-reg {
   margin: auto;
   max-width: 400px;
-}
-button.btn-primary {
-  background-color: #945656;
-  border-color: #945656;
-}
-button.btn-primary:hover,
-button.btn-primary:focus {
-  background-color: #854d4d; /*10% darkened*/
-  border-color: #854d4d; /*10% darkened*/
 }
 .form-link:hover {
   color: #854d4d; /*10% darkened*/

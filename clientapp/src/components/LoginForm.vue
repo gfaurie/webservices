@@ -9,6 +9,7 @@
         id="username-input"
         v-model="username"
         type="text"
+        class="rounded-pill"
         @input="emitUsername"
         required
       ></b-form-input>
@@ -22,6 +23,7 @@
         id="password-input"
         v-model="password"
         type="password"
+        class="rounded-pill"
         @input="emitPassword"
         required
       ></b-form-input>

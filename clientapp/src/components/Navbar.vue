@@ -10,7 +10,10 @@
         >
           Se déconnecter
         </b-nav-item>
-        <b-nav-item v-if="!isAuthenticated" v-on:click="onGoAuth">
+        <b-nav-item
+          v-if="!isAuthenticated"
+          v-on:click="onGoAuth"
+        >
           Se connecter
         </b-nav-item>
       </b-navbar-nav>
@@ -26,7 +29,7 @@ export default {
   data() {
     return {
       userService: new UserService(this.$router),
-      refreshBackDoor: 0
+      refreshBackDoor: 0,
     };
   },
   computed: {
@@ -39,10 +42,10 @@ export default {
     onGoAuth() {
       this.$router.push("/login");
     },
-    onDisconnect(){
+    onDisconnect() {
       this.userService.disconnect();
       this.refreshBackDoor++;
-    }
+    },
   },
 };
 </script>
@@ -58,12 +61,11 @@ a.nav-link {
   padding-left: 10px;
   padding-right: 10px;
   color: white !important;
+  border-radius: 50rem;
 }
 a.nav-link:hover {
   color: white !important;
   text-decoration: none;
-  border-radius: 5px;
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
 </style>
-

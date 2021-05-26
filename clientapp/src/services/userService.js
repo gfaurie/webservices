@@ -10,6 +10,8 @@ export default class UserService {
             localStorage.setItem("authenticatedUser", userForm.username);
             localStorage.setItem("authenticatedUserIsManager", isMgr);
             this._router.push(isMgr ? 'homemanager' : 'homedev');
+            // Force reload to update navbar
+            window.location.reload();
         }
     }
 

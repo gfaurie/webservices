@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import HomeDev from '../views/HomeDev.vue'
+import HomeManager from '../views/HomeManager.vue'
 
 Vue.use(VueRouter)
 
@@ -32,10 +33,32 @@ const routes = [{
             if (localStorage.getItem("authenticatedUser") == null) {
                 next({ name: "Login" });
             } else {
-                next()
+                if (localStorage.getItem("authenticatedUserIsManager") == "true") {
+                    next({ name: "HomeManager" });
+                } else {
+                    next()
+                }
+            }
+        }
+    },
+    {
+        path: "/homemanager",
+        name: "HomeManager",
+        component: HomeManager,
+        // Si pas les droits redirige vers login/register
+        beforeEnter: (to, from, next) => {
+            if (localStorage.getItem("authenticatedUser") == null) {
+                next({ name: "Login" });
+            } else {
+                if (localStorage.getItem("authenticatedUserIsManager") == "false") {
+                    next({ name: "HomeDev" });
+                } else {
+                    next()
+                }
             }
         }
     }
+
     // {
     //     path: '/about',
     //     name: 'About',

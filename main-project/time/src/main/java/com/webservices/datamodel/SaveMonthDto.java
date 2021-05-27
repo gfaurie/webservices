@@ -4,41 +4,41 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.MappedCollection;
-import org.springframework.data.relational.core.mapping.Table;
+public class SaveMonthDto {
 
-@Table(value = "month")
-public class Month {
-	
-    @Id
-    @Column(value = "id_month")
-    private int idMonth;
+	private Integer idMonth;
     
-    @Column(value = "id_user")
     private int idUser;
-    
-    @Column(value = "nb_hour")
+
     private int nbHour;
     
-    @Column(value = "start_date")
     private Date startDate;
 
-    @Column(value = "end_date")
     private Date endDate;
     
-    @Column(value = "is_locked")
     private int isLocked;
     
-    @MappedCollection(keyColumn = "id_month", idColumn = "id_month")
 	private Set<TimePerProjectAndMonth> timePerProjectAndMonths = new HashSet<>();
+	
+	public SaveMonthDto() {
+		
+	}
 
-	public int getIdMonth() {
+	public SaveMonthDto(Month month) {
+		idMonth = month.getIdMonth();
+		idUser = month.getIdUser();
+		startDate = month.getStartDate();
+		endDate = month.getEndDate();
+		nbHour = month.getNbHour();
+		isLocked = month.getIsLocked();
+		timePerProjectAndMonths.addAll(month.getTimePerProjectAndMonths());
+	}
+	
+	public Integer getIdMonth() {
 		return idMonth;
 	}
 
-	public void setIdMonth(int idMonth) {
+	public void setIdMonth(Integer idMonth) {
 		this.idMonth = idMonth;
 	}
 	
@@ -86,9 +86,7 @@ public class Month {
 		return timePerProjectAndMonths;
 	}
 
-	public void addTimePerProjectAndMonth(TimePerProjectAndMonth timePerProjectAndMonth) {
-		this.timePerProjectAndMonths.add(timePerProjectAndMonth);
-	}	
-	
-	
+	public void addTimePerProjectAndMonths(TimePerProjectAndMonth timePerProjectAndMonths) {
+		this.timePerProjectAndMonths.add(timePerProjectAndMonths);
+	}
 }

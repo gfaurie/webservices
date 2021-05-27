@@ -1,7 +1,8 @@
 CREATE DATABASE `web_services` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
+Use `web_services`;
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
@@ -12,14 +13,15 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `project` (
-  `id_project` int(11) NOT NULL,
+  `id_project` int(11) NOT NULL AUTO_INCREMENT,
+  `Nom` varchar(255) NOT NULL,
   `time` int(10) unsigned zerofill NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_project`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `month` (
-  `id_month` int(11) NOT NULL,
+  `id_month` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
   `nb_hour` int(11) NOT NULL,
   `start_date` date NOT NULL,
@@ -31,7 +33,7 @@ CREATE TABLE `month` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `time_per_project_and_month` (
-  `id_time_per_project_and_month` int(11) NOT NULL,
+  `id_time_per_project_and_month` int(11) NOT NULL AUTO_INCREMENT,
   `id_project` int(11) NOT NULL,
   `id_month` int(11) NOT NULL,
   `nb_hour` int(11) NOT NULL,

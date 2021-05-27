@@ -16,6 +16,10 @@ public class TimePerProjectAndMonth {
 	
     @Column(value = "nb_hour")
     private int nbHour;
+    
+    public TimePerProjectAndMonth() {
+    	
+    }
 
 	public long getIdTimePerProjectAndMonth() {
 		return idTimePerProjectAndMonth;

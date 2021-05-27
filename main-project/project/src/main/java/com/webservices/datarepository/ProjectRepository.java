@@ -2,9 +2,10 @@ package com.webservices.datarepository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
-import com.webservices.datamodel.User;
+
+import com.webservices.datamodel.Project;
 
 @Component
-public interface UserRepository extends CrudRepository<User, Long>{
+public interface ProjectRepository extends CrudRepository<Project, Long>{
 	
 }

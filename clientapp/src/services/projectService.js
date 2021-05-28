@@ -6,19 +6,19 @@ export default class ProjectService {
     getAllProjects() {
         return [{
             id_project: 0,
-            nom: "CGA",
+            nom: "Projet Web Services",
             time: 500,
-            description: "Espace commun v2, c#, Angular"
+            description: "VueJS, Rest, Soap, Java"
         }, {
             id_project: 1,
-            nom: "Limagrain - Hendrix",
+            nom: "Big Data Project",
             time: 43,
-            description: "Application de gestion de projets, ASP.NET, Jquery"
+            description: "CV Predictor, AWS"
         }, {
             id_project: 2,
-            nom: "FEI - Adele",
+            nom: "Mecanique de vol capteurs",
             time: 2000,
-            description: "France education international, en cours de dev, c#, Blazor"
+            description: "C, FreeRTOS, Tasks, Queues, Semaphores"
         }]
     }
 }

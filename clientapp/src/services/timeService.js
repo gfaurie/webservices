@@ -6,7 +6,29 @@ export default class TimeService {
             baseURL: 'http://localhost:8091'
         });
 
+        this.monthDictionary = {
+            1: "Janvier",
+            2: "Février",
+            3: "Mars",
+            4: "Avril",
+            5: "Mai",
+            6: "Juin",
+            7: "Juillet",
+            8: "Août",
+            9: "Septembre",
+            10: "Octobre",
+            11: "Novembre",
+            12: "Décembre",
+        };
         console.log("Time Service built.");
+    }
+
+    mapDateMonthName(date) {
+        let date2Date = new Date(date);
+        let month = date2Date.getMonth() + 1;
+        let year = date2Date.getFullYear();
+        let stringMonth = `${this.monthDictionary[month]} ${year}`
+        return stringMonth;
     }
 
     getMonthByUserId(monthDate, userId) {
@@ -32,6 +54,7 @@ export default class TimeService {
         };
     }
 
+    // TODO Implement
     async updateTime(time) {
         try {
             const response = await this.instance.put(`/times/${time.id}`, {

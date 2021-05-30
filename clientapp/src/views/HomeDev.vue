@@ -4,17 +4,24 @@
     <div class="row">
       <div class="col-10">
         <div class="month-select row">
-          <div class="col-12">
+          <div class="col">
             <b-button
               pill
               @click="goToPreviousMonth"
               variant="outline-secondary"
               >&lt;</b-button
             >
-            <span class="month-display">Mai 2021</span>
+            <span class="month-display">{{ dateToString }}</span>
             <b-button pill @click="goToNextMonth" variant="outline-secondary"
               >&gt;</b-button
             >
+            <span
+              class="month-display"
+              v-bind:class="{ 'not-valid': remainingHours < 0 }"
+              v-if="monthData != null"
+            >
+              Solde : {{ remainingHours }}/{{ monthData.nbHour }} heures
+            </span>
           </div>
         </div>
         <div class="append-project row mt-3">
@@ -44,11 +51,16 @@
       </div>
       <div class="col-2 action-group text-right">
         <b-button pill class="btn-action my-1">Export PDF</b-button>
-        <b-button pill variant="primary" class="btn-action my-1"
+        <b-button
+          pill
+          variant="primary"
+          class="btn-action my-1"
+          v-bind:disabled="remainingHours < 0"
           >Verrouiller</b-button
         >
       </div>
     </div>
+    <hr class="mt-4" />
     <div class="display-projects mt-4">
       <h4 class="mb-3">Mes projets</h4>
       <!-- <added-project
@@ -120,6 +132,16 @@ export default {
       });
       return tmp;
     },
+    remainingHours() {
+      let sum = 0;
+      this.monthData.timePerProjectAndMonths.forEach((element) => {
+        sum += element.nbHours;
+      });
+      return this.monthData.nbHour - sum;
+    },
+    dateToString() {
+      return this.timeService.mapDateMonthName(this.monthData.startDate);
+    },
   },
   mounted() {
     let mnth = this.timeService.getMonthByUserId(this.currentMonth, 0);
@@ -182,7 +204,12 @@ button.btn-outline-primary {
   color: #945656;
   border-color: #945656;
 }
-button.btn-outline-primary:hover {
+button.btn-outline-primary:hover,
+button.btn-primary:disabled {
   background-color: #945656;
+  border-color: #945656;
+}
+.not-valid {
+  color: #945656;
 }
 </style>
